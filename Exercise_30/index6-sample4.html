@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main>section>section{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            background-image: linear-gradient(134deg, rgb(123, 0, 139), rgb(208, 0, 255), rgb(180, 109, 182));
+            padding: 200px 0;
+            border: 10px solid #c5c5c5;
+        }
+        main>section>section>h1{
+            width: 100%;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: uppercase;
+            font-size: 80px;
+            text-align: center;
+            transition: 1s;
+        }
+        main>section>section>img{
+            display: flex;
+            width: 65%;
+            transition: 2s;
+        }
+    </style>
+</head>
+<body>
+    <main onscroll="">
+        <section>
+            <section>
+                <h1 data-aos="fade-up">wlc to website</h1>
+            </section>
+            <section>
+                <img data-aos="zoom-out-right" src="img/1.jpg" alt="">
+            </section>
+            <section>
+                <h1>mahsa delfani</h1>
+            </section>
+            <section>
+                <img data-aos="zoom-in-left" src="img/2.jpg" alt="">
+            </section>
+            <section>
+                <img data-aos="flip-down"  src="img/images.jpg" alt="">
+            </section>
+            <section>
+                <img data-aos="zoom-in-left" src="img/1.jpg" alt="">
+            </section>
+            <section>
+                <img data-aos="flip-down" src="img/2.jpg" alt="">
+            </section>
+        </section>
+    </main>
+</body>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        main>section>section{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            background-image: linear-gradient(134deg, rgb(250, 13, 191), rgb(221, 123, 193), rgb(205, 48, 150));
+            padding: 200px 0;
+            border: 10px solid #c5c5c5;
+        }
+        main>section>section>h1{
+            width: 100%;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: uppercase;
+            margin: 200px 0;
+            font-size: 80px;
+            text-align: center;
+            transition: 1s;
+        }
+        main>section>section>img{
+            display: flex;
+            width: 65%;
+            transition: 1s;
+        }
+        .md{
+            width: 0;
+            height: 20px;
+            background-color: rgb(103, 6, 72);
+            position: fixed;
+            top: 0;
+            left: 0;
+        }
+        main>section>section:nth-of-type(2)>img{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(3)>h1{
+            opacity: 0;
+        }
+        main>section>section:nth-of-type(4)>img{
+            transform: translateX(1500px);
+        }
+        main>section>section:nth-of-type(5)>img{
+            transform: scale(0);
+        }
+    </style>
+</head>
+<body>
+    <main onscroll="">
+        <section>
+            <section>
+                <h1>wlc to website</h1>
+            </section>
+            <section>
+                <img src="" alt="">
+            </section>
+            <section>
+                <h1>mahsa delfani</h1>
+            </section>
+            <section>
+                <img src="img/1.jpg" alt="">
+            </section>
+            <section>
+                <img src="img/2.jpg" alt="">
+            </section>
+        </section>
+    </main>
+    <div class="md"></div>
+</body>
+<script>
+    let _img = document.getElementsByTagName('main')[0]
+    _img.addEventListener('scroll', function () {
+        let maxST = (_img.scrollHeight) - (_img.clientHeight)
+        let _width = (_img.scrollTop * 100) / maxST
+        document.getElementsByClassName('md')[0].style.width = "calc(" + _width + "% - 17px)"
+    })
+
+    let _sec= document.querySelectorAll('main>section>section')
+
+    for (i = 1; i < _sec.length; i++) {
+        temp = _sec[i].offsetTop
+        _sec[i].setAttribute('data-offset', temp)
+    }
+    _img.addEventListener('scroll', function () {
+        let ST = _img.scrollTop
+
+        if ((ST+100) > _sec[1].getAttribute('data-offset')) {
+            document.querySelector('main>section>section:nth-of-type(2)>img').style.transform = 'translateX(0)'
+        }
+        if ((ST+100) > _sec[2].getAttribute('data-offset')) {
+            document.querySelector('main>section>section:nth-of-type(3)>h1').style.opacity = '1'
+        }
+        if ((ST+100) > _sec[3].getAttribute('data-offset')) {
+            document.querySelector('main>section>section:nth-of-type(4)>img').style.transform = 'translateX(0)'
+        }
+        if ((ST-200) > _sec[4].getAttribute('data-offset')) {
+            document.querySelector('main>section>section:nth-of-type(5)>img').style.transform = 'scale(1)'
+        }
+    })
+</script>
+</html>

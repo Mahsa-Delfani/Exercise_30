@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        main{
+            width: 100%;
+            height: 100vh;
+            overflow-y: scroll;
+            overflow-x: hidden;
+        }
+        main>section>section{
+            width: 100%;
+            height: auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            background-image: linear-gradient(134deg, rgb(224, 122, 170), rgb(206, 42, 154), rgb(161, 103, 151));
+            padding: 200px 0;
+            border: 10px solid #c5c5c5;
+        }
+        main>section>section>h1{
+            width: 100%;
+            color: white;
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            text-transform: uppercase;
+            font-size: 80px;
+            text-align: center;
+            transition: 1s;
+        }
+        main>section>section>img{
+            display: flex;
+            width: 65%;
+            transition: 2s;
+        }
+        .line{
+            width: 0;
+            height: 20px;
+            background-color: rgb(106, 8, 70);
+            position: fixed;
+            top: 0;
+            left: 0;
+            font-size: 30px;
+            color: rgb(126, 119, 119);
+            font-weight: bolder;
+        }
+        main>section>section:nth-of-type(2)>img{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(3)>h1{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(4)>img{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(5)>img{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(6)>img{
+            transform: translateX(-1500px);
+        }
+        main>section>section:nth-of-type(7)>img{
+            transform: translateX(-1500px);
+        }
+    </style>
+</head>
+<main onscroll="">
+    <section>
+        <section>
+            <h1>wlc to  website</h1>
+        </section>
+        <section>
+            <img src="img/images.jpg" alt="">
+        </section>
+        <section>
+            <h1>mahsa delani</h1>
+        </section>
+        <section>
+            <img src="img/1.jpg" alt="">
+        </section>
+        <section>
+            <img src="img/images.jpg" alt="">
+        </section>
+        <section>
+            <img src="img/2.jpg" alt="">
+        </section>
+        <section>
+            <img src="img/1.jpg" alt="">
+        </section>
+    </section>
+</main>
+<div class="line"></div>
+<body>
+
+    <script>
+        let _sample = document.getElementsByTagName('main')[0]
+        _sample.addEventListener('scroll', function () {
+            let maxST = (_sample.scrollHeight) - (_sample.clientHeight)
+            let _width = (_sample.scrollTop * 100) / maxST
+            document.getElementsByClassName('line')[0].style.width = "calc(" + _width + "% - 17px)"
+        })
+
+        let _sec = document.querySelectorAll('main>section>section')
+
+        for (i = 1; i < _sec.length; i++) {
+            temp = _sec[i].children
+            temp = temp[0].offsetTop
+            _sec[i].setAttribute('data-offset', temp)
+        }
+
+        _sample.addEventListener('scroll', function () {
+            let ST = _sample.scrollTop
+            document.getElementsByClassName('line')[0].innerHTML=ST
+
+            _sec.forEach(function(m){
+                if(
+                    (ST) >m.getAttribute('data-offset')
+                ){
+                    let _child = m.children
+                    _child[0].style.transform = 'translateX(0)'
+                }
+            })
+        })
+    </script>
+</body>
+</html>
